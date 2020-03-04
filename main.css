@@ -1,0 +1,31 @@
+h1{
+    font-family:'Pacifico';
+}
+label, input,button,p{
+    font-family: 'Open Sans';
+}
+button{
+    border:none;
+}
+
+input{
+    border:1px solid #F4F4F4;
+}
+button{
+    box-shadow: 0rem 0rem 0.2rem 0.2rem  rgba( 0, 0, 0, 0.03 );
+}
+
+.m-auto{
+    margin:auto;
+}
+.bgop{
+    background:rgba(0,0,0,.4);
+}
+#pop{
+    z-index: 1000;
+}
+@media only screen and (max-width: 500px){
+    .flex-col-sm{
+        flex-direction: column;
+    }
+}

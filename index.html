@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tip Calculator</title>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./main.css">
+
+</head>
+<body>
+    <main class='vh-100-ns'>
+        <div class='vh-100 flex flex-row-ns items-center-ns justify-center-ns flex-col-sm'>
+            <div class='db tc w-100 w-50-ns pa2 '>
+                <img class='w-70 mt6' src="./img/money.svg">
+            </div>
+            <div class=' db tc w-100 w-50-ns pa2'>
+                <form class='pa2 pa4-ns shadow-2 br4 vh-80 tc m-auto w-70 mt4' method='POST'>
+                    <h1 class='light-green'>Tip Calculator</h1>
+                    <div class='pa2'>
+                         <label class='db ma2 tl'>How much is your bill?</label>
+                         <input class='pa2 pa3-ns w-100 br-pill' id='bill' type="number" placeholder="0.00" step="0.01" min="0" required>
+                    </div>
+                    <div class='pa2'>
+                         <label class='db ma2 tl'>Rate your service.</label>
+                         <select class='pa2 pa3-ns w-100 br-pill' id="service" name="service" required>
+                          <option value="20" selected>Excellent</option>
+                          <option value="15">Good</option>
+                          <option value="10">Fair</option>
+                        </select>
+                    </div>
+                    <div class='pa2'>
+                         <label class='db ma2 tl'>How many people are sharing the bill?</label>
+                         <input class='pa2 pa3-ns w-100 br-pill' id='people' type="number" name="people" min='1' required>
+                    </div>
+                    <button type="submit" class='pa2 ph3 br-pill bg-light-green ma2 pointer grow white'>Generate</button>
+                </form>
+
+            </div>
+        </div>
+        <div class='dn fixed top-0 vh-100-ns w-100-ns bgop tc' id='pop' onclick="hide()">
+            <div class='pa2 pa4-ns shadow-2 br4 tc w-third dib bg-white mt5' >
+                <p class='' id='tip'> </p>
+            </div>
+        </div>
+
+
+    </main>
+<script type="text/javascript" >
+
+document.querySelector('form').addEventListener('submit', (e) => {
+    var x = document.getElementById('service');
+    var service = x.options[x.selectedIndex].value;
+    var bill = document.getElementById('bill').value;
+    var people = document.getElementById('people').value;
+    var tip = (bill*service/100)/people;
+    console.log(tip);
+    console.log(bill);
+    console.log(service);
+    console.log(people);
+    e.preventDefault();
+    popup(tip);
+});
+function popup(tip){
+    // var form=document.querySelector('form');
+    // form.classList.add('dn');
+
+    var p = document.getElementById('tip');
+    var tiptxt=document.createTextNode('You should tip: $' + tip);
+    p.appendChild(tiptxt);
+
+    var pop=document.getElementById('pop');
+    pop.classList.remove('dn');
+}
+function hide(){
+    document.getElementById('pop').classList.add('dn');
+}
+</script>
+</body>
+</html>
